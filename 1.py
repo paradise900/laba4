@@ -5,7 +5,7 @@ from tkinter import ttk
 import pygame
 
 
-def clicked():
+def clicked(text_enter, tab1):
     CHARACTERS = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     OFFSET_R = 3
     OFFSET_L = 5
@@ -16,7 +16,8 @@ def clicked():
     key += '-'
     for ch in input_text:
         key += CHARACTERS[(CHARACTERS.index(ch) - OFFSET_L) % len(CHARACTERS)]
-    lbl = Label(tab1, text=f'Ваш ключ: {key}', font=('Arial Bold', 30), relief="groove")
+    lbl = Label(tab1, text=f'Ваш ключ: {key}', \
+        font=('Arial Bold', 30), relief="groove")
     lbl.grid(row=4)
     lbl.place(anchor=CENTER, relx=0.5, rely=0.5)
 
@@ -50,7 +51,8 @@ image_bg = PhotoImage(file="2731746.jpg.png")
 background_label1 = Label(tab2, image=image_bg, border=50)
 background_label1.place(x=0, y=0, relwidth=1, relheight=1)
 
-lbl_hi = Label(tab1, text='Введите первую часть вашего ключа!', font=('Arial Bold', 40), relief="groove")
+lbl_hi = Label(tab1, text='Введите первую часть вашего ключа!', \
+    font=('Arial Bold', 40), relief="groove")
 lbl_hi.grid(column=0, row=0)
 lbl_hi.place(anchor=CENTER, relx=0.5, rely=0.1)
 
@@ -59,13 +61,15 @@ text_enter.grid(column=0, row=0)
 text_enter.place(anchor=CENTER, relx=0.5, rely=0.25)
 text_enter.focus()
 
-btn = Button(tab1, text='generate', bg='red', fg='black', command=clicked, border=0)
+btn = Button(tab1, text='generate', bg='red', fg='black', \
+    command=clicked(text_enter, tab1), border=0)
 btn.grid(column=0)
 btn.place(anchor=CENTER, relx=0.5, rely=0.35)
 
 pygame.mixer.init()
 
-my_button = Button(tab2, text="Play Song", font=("Helvetica", 32), command=play)
+my_button = Button(tab2, text="Play Song", \
+    font=("Helvetica", 32), command=play)
 my_button.pack(pady=10)
 
 window.mainloop()
