@@ -5,11 +5,10 @@ from tkinter import ttk
 import pygame
 
 
-def clicked(text_enter, tab1):
+def clicked(input_text, tab1):
     CHARACTERS = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     OFFSET_R = 3
     OFFSET_L = 5
-    input_text = text_enter.get()
     key = input_text + '-'
     for ch in input_text:
         key += CHARACTERS[(CHARACTERS.index(ch) + OFFSET_R) % len(CHARACTERS)]
@@ -62,7 +61,7 @@ text_enter.place(anchor=CENTER, relx=0.5, rely=0.25)
 text_enter.focus()
 
 btn = Button(tab1, text='generate', bg='red', fg='black', \
-    command=clicked(text_enter, tab1), border=0)
+    command=lambda: clicked(text_enter.get(), tab1), border=0)
 btn.grid(column=0)
 btn.place(anchor=CENTER, relx=0.5, rely=0.35)
 
